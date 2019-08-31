@@ -34,6 +34,7 @@ namespace Algorthim
                 {
                     if(min>input[j]){
                         min = input[j];
+                        input[j] = input[i];
                     }
                 }
                 input[i]=min;
