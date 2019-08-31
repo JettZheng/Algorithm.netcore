@@ -7,8 +7,8 @@ namespace Algorthim
         static void Main(string[] args)
         {
             var input = Sort.SetInput(8,8);
-            Sort.SelectSort(input);
-             //Sort.BubbleSort(input);
+            //Sort.SelectSort(input);
+            Sort.BubbleSort(input);
              //Sort.InsertSort(input);
              //Sort.ShellSort(input);
         }
@@ -24,6 +24,7 @@ namespace Algorthim
             }
             return output;
         }
+
         public static int[] SelectSort(int[] input){
             var n = input.Length;
             int min;
@@ -34,6 +35,7 @@ namespace Algorthim
                 {
                     if(min>input[j]){
                         min = input[j];
+                        //after select shold swap not only replace
                         input[j] = input[i];
                     }
                 }
@@ -49,10 +51,10 @@ namespace Algorthim
             {
                 for (int j = i-1; j >=0; j--)
                 {
-                    if (input[j]>input[i])
+                    if (input[j]>input[j+1])
                     {
-                     temp = input[i];
-                     input[i]= input[j];
+                     temp = input[j+1];
+                     input[j+1]= input[j];
                      input[j]=temp;
                     }else{
                         break;
