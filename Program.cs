@@ -8,8 +8,8 @@ namespace Algorthim
         {
             var input = Sort.SetInput(8,8);
             //Sort.SelectSort(input);
-            Sort.BubbleSort(input);
-             //Sort.InsertSort(input);
+            //Sort.BubbleSort(input);
+            Sort.InsertSort(input);
              //Sort.ShellSort(input);
         }
     }
@@ -79,6 +79,7 @@ namespace Algorthim
                         }
                     }else{
                         input[j+1] = temp;
+                        break;
                     }
                 }
             }
