@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Algorthim
 {
@@ -6,11 +7,27 @@ namespace Algorthim
     {
         static void Main(string[] args)
         {
-            var input = Sort.SetInput(8,8);
+            var input = Sort.SetInput(40000,40000);
+            var input2 = new int[40000];
+            var input3 = new int[40000];
+            var input4 = new int[40000];
+            Array.Copy(input,input2,40000);
+            Array.Copy(input,input3,40000);
+            Array.Copy(input,input4,40000);
+            Thread SelectSort = new Thread(()=>{Sort.SelectSort(input);System.Console.WriteLine("select");});
+            Thread BubbleSort = new Thread(()=>{Sort.BubbleSort(input2);System.Console.WriteLine("bubble");});
+            Thread InsertSort = new Thread(()=>{Sort.InsertSort(input3);System.Console.WriteLine("insert");});
+            Thread ShellSort = new Thread(()=>{Sort.ShellSort(input4);System.Console.WriteLine("shell");});
+
+            SelectSort.Start();
+            BubbleSort.Start();
+            InsertSort.Start();
+            //ShellSort.Start();
+
             //Sort.SelectSort(input);
             //Sort.BubbleSort(input);
-            Sort.InsertSort(input);
-             //Sort.ShellSort(input);
+            //Sort.InsertSort(input);
+            //Sort.ShellSort(input);
         }
     }
     
@@ -29,13 +46,12 @@ namespace Algorthim
             var n = input.Length;
             int min;
             for (int i = 0; i < n; i++)
-            {
+            { 
                 min = input[i];
                 for (int j = i+1; j < n; j++)
                 {
                     if(min>input[j]){
                         min = input[j];
-                        //after select shold swap not only replace
                         input[j] = input[i];
                     }
                 }
